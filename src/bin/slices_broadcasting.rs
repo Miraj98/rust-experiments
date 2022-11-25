@@ -7,10 +7,6 @@ fn main() {
         for j in 0..a.len() {
             _a.push(unsafe { a_ptr.add(j).as_ref().unwrap() })
         }
-        for _ in 0..reps-1 {
-            let mut s = _a[..].to_vec();
-            _a.append(&mut s);
-        }
         _a
     };
 
