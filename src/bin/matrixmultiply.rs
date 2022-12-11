@@ -1,4 +1,5 @@
 use std::time::Instant;
+use std::rc::Rc;
 
 use matrixmultiply::sgemm;
 use rand::{Rng, distributions::Uniform};
@@ -8,6 +9,9 @@ fn main() {
     let a: Vec<f32> = rand::thread_rng().sample_iter(&range).take(10000).collect();
     let b: Vec<f32> = rand::thread_rng().sample_iter(&range).take(10000).collect();
    let mut c = vec![0.; 10000];
+
+   let rca = Rc::new(a.clone());
+   let rcb = Rc::new(b.clone());
 
    // Manual implemnentation
    let start1 = Instant::now();
@@ -23,7 +27,7 @@ fn main() {
    let start2 = Instant::now();
    let mut d = vec![0.; 10000];
    unsafe {
-        sgemm(100, 100, 100, 1., a.as_ptr(), 100, 1, b.as_ptr(), 100, 1, 0., d.as_mut_ptr(), 100, 1)
+        sgemm(100, 100, 100, 1., rca.as_ptr(), 100, 1, rcb.as_ptr(), 100, 1, 0., d.as_mut_ptr(), 100, 1)
    }
    println!("{} secs", start2.elapsed().as_secs_f32());
 

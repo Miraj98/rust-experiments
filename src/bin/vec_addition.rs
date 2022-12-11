@@ -1,4 +1,4 @@
-use std::{time::Instant, ptr::NonNull, mem::ManuallyDrop};
+use std::{time::Instant, mem::ManuallyDrop};
 
 use rand::{distributions::Uniform, Rng};
 

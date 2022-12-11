@@ -8,4 +8,5 @@ edition = "2021"
 [dependencies]
 rayon = {version = "1.6.0"}
 rand = {version = "0.8.5"}
-matrixmultiply = {version = "0.3.2"}
+matrixmultiply = {version = "0.3.2", threading = true}
+itertools = {version = "0.10.5"}

@@ -1,10 +1,5 @@
 use std::{rc::Rc, time::Instant};
 
-use rayon::prelude::{
-    IndexedParallelIterator, IntoParallelIterator, IntoParallelRefIterator,
-    IntoParallelRefMutIterator, ParallelIterator,
-};
-
 const N: usize = 500_000;
 const ITERS: usize = 60_000;
 
